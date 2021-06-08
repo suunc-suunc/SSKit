@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SSKit",
+        "repositoryURL": "/Users/suunguyen/Developments/Professionals/XCodes/iOS/SSKit",
+        "state": {
+          "branch": "main",
+          "revision": "a9a7298848ec2f109c2ce116bf3c63f76b3a59c4",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

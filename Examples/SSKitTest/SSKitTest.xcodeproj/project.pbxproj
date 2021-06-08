@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		25516808266F291100500A46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25516807266F291100500A46 /* AppDelegate.swift */; };
 		2551680C266F291100500A46 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2551680B266F291100500A46 /* ViewController.swift */; };
 		25516811266F291400500A46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25516810266F291400500A46 /* Assets.xcassets */; };
+		2551681D266F2DD300500A46 /* SSKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2551681C266F2DD300500A46 /* SSKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2551681D266F2DD300500A46 /* SSKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +76,9 @@
 			dependencies = (
 			);
 			name = SSKitTest;
+			packageProductDependencies = (
+				2551681C266F2DD300500A46 /* SSKit */,
+			);
 			productName = SSKitTest;
 			productReference = 25516804266F291100500A46 /* SSKitTest.app */;
 			productType = "com.apple.product-type.application";
@@ -101,6 +106,9 @@
 				Base,
 			);
 			mainGroup = 255167FB266F291100500A46;
+			packageReferences = (
+				2551681B266F2DD300500A46 /* XCRemoteSwiftPackageReference "SSKit" */,
+			);
 			productRefGroup = 25516805266F291100500A46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -310,6 +318,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2551681B266F2DD300500A46 /* XCRemoteSwiftPackageReference "SSKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "file:///Users/suunguyen/Developments/Professionals/XCodes/iOS/SSKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2551681C266F2DD300500A46 /* SSKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2551681B266F2DD300500A46 /* XCRemoteSwiftPackageReference "SSKit" */;
+			productName = SSKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 255167FC266F291100500A46 /* Project object */;
 }

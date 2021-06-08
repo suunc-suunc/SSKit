@@ -7,8 +7,13 @@
 
 import ARKit
 
+public enum SSQRCodeScannerResult{
+    case completed(code: String)
+    case error(error: Error)
+}
+
 public protocol SSQRCodeScannerDelegate: NSObjectProtocol{
-    func onScannerResult(_ scanner: SSQRCodeScanner, _ code: String)
+    func onScannerResult(_ scanner: SSQRCodeScanner, result: SSQRCodeScannerResult)
 }
 
 public class SSQRCodeScanner: NSObject{
@@ -29,14 +34,13 @@ public class SSQRCodeScanner: NSObject{
     private override init() {
         super.init()
         guard let videoCaptureDevice = AVCaptureDevice.default(for: .video) else {
-            self.delegate?.onErrorMessgae(self, "[SSQRCodeScanner]: Can't find camera")
+            
             return
         }
         var videoInput: AVCaptureDeviceInput
         do {
             videoInput = try AVCaptureDeviceInput(device: videoCaptureDevice)
             guard let captureSession = self.captureSession else {
-                self.delegate?.onErrorMessgae(self, "[SSQRCodeScanner]: Can't init capture session")
                 return
             }
             if captureSession.canAddInput(videoInput){
@@ -54,13 +58,12 @@ public class SSQRCodeScanner: NSObject{
             self.previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.previewLayer?.videoGravity = .resizeAspectFill
         }catch let error{
-            self.delegate?.onErrorMessgae(self, "[SSQRCodeScanner]: \(error.localizedDescription)")
+            self.delegate?.onScannerResult(self, result: .error(error: error))
         }
     }
     
     public func setPreview(_ view: UIView){
         if previewLayer == nil{
-            self.delegate?.onErrorMessgae(self, "[SSQRCodeScanner]: Can't set previewLayer because of nil value")
             return
         }
         self.previewLayer?.removeFromSuperlayer()
@@ -87,7 +90,7 @@ extension SSQRCodeScanner: AVCaptureMetadataOutputObjectsDelegate{
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else { return }
             guard let stringValue = readableObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            self.delegate?.onCompleted(self, stringValue)
+            self.delegate?.onScannerResult(self, result: .completed(code: stringValue))
         }
     }
 }
