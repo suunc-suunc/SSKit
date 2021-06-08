@@ -3,10 +3,10 @@
     "pins": [
       {
         "package": "SSKit",
-        "repositoryURL": "/Users/suunguyen/Developments/Professionals/XCodes/iOS/SSKit",
+        "repositoryURL": "https://github.com/suunc-suunc/SSKit.git",
         "state": {
           "branch": "main",
-          "revision": "a9a7298848ec2f109c2ce116bf3c63f76b3a59c4",
+          "revision": "5d6559cf3ce76a266e4e24f8461a55f50525c734",
           "version": null
         }
       }
